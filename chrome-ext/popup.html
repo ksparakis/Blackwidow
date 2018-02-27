@@ -1,0 +1,165 @@
+<!doctype html>
+<html>
+
+<head>
+    <title>BlackWidow</title>
+    <style>
+        @font-face {
+            font-family: 'offside';
+            /*a name to be used later*/
+            src: "resources/Offside-Regular.ttf";
+            /*URL to font*/
+        }
+        
+        body {
+            overflow: hidden;
+            margin: 0px;
+            padding: 0px;
+            background: white;
+            width: 300px;
+            height: 400px
+        }
+        
+        h1 {
+            font-family: 'offside';
+            font-weight: bold;
+        }
+        
+        .unselectable {
+            -webkit-user-select: none;
+            /* Chrome/Safari */
+            -moz-user-select: none;
+            /* Firefox */
+            -ms-user-select: none;
+            /* IE10+ */
+            /* Rules below not implemented in browsers yet */
+            -o-user-select: none;
+            user-select: none;
+            cursor: default;
+        }
+        
+        #settings:hover {
+            opacity: 0.4;
+            cursor: pointer;
+        }
+        
+        #ScanForBTN:hover {
+            background-color: rgba(0, 0, 0, 0.7);
+            z-index: 1;
+            cursor: pointer;
+        }
+        
+        #status {
+            background: #3F3F3F;
+            height: 50px;
+            padding-top: 5px;
+        }
+        
+        #ScanForBTN {
+            background: #c41d2e;
+            color: #fff;
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            height: 50px;
+        }
+        
+        #ScanBody {
+            background: #fff;
+            width: 100%;
+            height: 100%;
+            box-shadow: inset 0 15px 5px -16px #111;
+        }
+        
+        .centerText {
+            padding-top: 100px;
+            text-align: center;
+        }
+        
+        #ScanClickHere {
+            color: #ec1126;
+        }
+        
+        #ScanClickHere:hover {
+            color: #3F3F3F;
+            cursor: pointer;
+        }
+        
+        .hideThis {
+            display: none;
+        }
+    </style>
+
+
+
+
+</head>
+
+<body>
+    <!-- Logo and header -->
+    <h1 class="unselectable" style="padding:0px 5px 0px 5px;margin-top:5px;margin-bottom:5px;">BlackWidow <img id="settings" src="imgs/settings.png" height="18px" style="float:right;margin-right:5px;margin-top:5px;" /></h1>
+
+    <!-- Status Bar -->
+    <div id="status">
+        <!-- Displayed if Webpage Has Not Been Scanned -->
+        <div class="NotScanned">
+            <h3 style="text-align:center;color:#fff;margin-top:5px">Page Not Scanned</h3>
+            <h4 style="text-align:center;color:#bfbfbf;margin-top:-10px">No Code or Proggraming Lingo Detected</h4>
+        </div>
+
+        <!-- Displayed if Webpage has no vulnerabilities -->
+        <div class="NoVulns">
+            <h3 style="text-align:center;color:#fff;margin-top:15px">No Vulnerabilities Found</h3>
+        </div>
+
+        <!-- Displayed if vulnerabilites have been found -->
+        <div class="VulnsFound">
+            <h3 id="NumVulns" style="text-align:center;color: #ec1126;margin-top:5px">0</h3>
+            <h3 style="text-align:center; color:#ec1126;margin-top:-10px">Vulnerabilities Found</h3>
+        </div>
+
+        <!-- Displayed while scanning webpage -->
+        <div class="Scanning">
+            <h3 style="text-align:center;color:#fff;margin-top:15px">Scanning... This Might Take A While</h3>
+        </div>
+    </div>
+
+    <script src="resources/jquery-3.2.1.min.js"></script>
+    <script src="popup.js"></script>
+    <!-- Body containing scan results -->
+    <div id="ScanBody">
+        <!-- Displayed if Webpage Has Not Been Scanned -->
+        <div class="centerText NotScanned">
+            <img src="imgs/emoji.png" style="filter: grayscale(100%);" height="20px" />
+            <br> Did we mess up?
+            <br>
+            <div id="ScanClickHere">Click here to scan anyway.</div>
+        </div>
+
+        <!-- Displayed if Webpage has no vulnerabilities -->
+        <div class="NoVulns centerText">
+            <img src="imgs/grin-emoji.png" style="filter: grayscale(100%);" height="20px" />
+            <br> Last Scan Was On:
+            <div id="LastScanDate"></div>
+            <div id="ScanClickHere">Click here to request a rescan.</div>
+        </div>
+
+        <!-- Displayed if vulnerabilites have been found -->
+        <div class="VulnsFound">
+        </div>
+
+        <!-- Displayed while scanning webpage -->
+        <div class="Scanning centerText" style="">
+            <img src="imgs/loading.gif" width="200px" />
+        </div>
+
+    </div>
+
+    <!-- Button to show what is scanned -->
+    <div id="ScanForBTN">
+        <h3 style="text-align:center;font-family:offside">What Do We Scan For?</h3>
+    </div>
+</body>
+
+
+</html>
